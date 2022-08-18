@@ -21,8 +21,15 @@ if( env( 'SHOP_MULTILOCALE' ) )
 }
 
 Route::get('/', function () {
-    return response('home');
+    return view ('home');
 });
+Route::get('/ecommerce-signup', function () {
+    return view ('sign-up');
+});
+Route::get('/ecommerce-signin', function () {
+    return view ('sign-in');
+});
+
 
 Route::group($locale ?? [], function() {
 
