@@ -20,6 +20,7 @@ if( env( 'SHOP_MULTILOCALE' ) )
     });
 }
 
+<<<<<<< Updated upstream
 Route::get('/', function () {
     return view ('home');
 });
@@ -30,13 +31,18 @@ Route::get('/ecommerce-signin', function () {
     return view ('sign-in');
 });
 
+=======
+// Route::get('/', function () {
+//     return response('home');
+// });
+>>>>>>> Stashed changes
 
 Route::group($locale ?? [], function() {
 
     // only if SHOP_MULTILOCALE isn't enabled due to restrictions in Laravel
     Auth::routes(['verify' => true]);
 
-    Route::get('/shop', '\Aimeos\Shop\Controller\CatalogController@homeAction')->name('aimeos_home');
+    Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction')->name('aimeos_home');
 
     Route::match(['GET', 'POST'], '{path?}', '\Aimeos\Shop\Controller\PageController@indexAction')
         ->name('aimeos_page')->where( 'path', '.*' );
