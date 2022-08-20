@@ -4,10 +4,10 @@
         <div class="image01">
             <form action="" method="POST" class="sign-in-page">
                 @csrf
-                <h4 style="padding: 56px 0px 10px 0px;font-weight: 700;text-align: center;">Sign In</h4>
-                <label for="email">Email</label><br>
+                <h2 style="padding: 95px 0px 10px 0px;font-weight: 900;letter-spacing:1px;text-align: center;">Sign In</h2>
+                <label for="email">E-MAIL</label><br>
                 <input type="email" placeholder="Email Address" name="email" id="email"><br>
-                <label for="password">Password</label><br>
+                <label for="password">PASSWORD</label><br>
                 <input type="text" placeholder="Enter Password" name="password" id="password"><br>
                 <input type="submit" id="submit-btn" value="Sign In">
                 <a href="/ecommerce-signup" class="sign_in" style="color: var(--dark-grey);">Sign Up<i
