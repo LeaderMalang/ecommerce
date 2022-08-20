@@ -159,7 +159,7 @@ ul.footer-links{
 }
 .image{
     background: linear-gradient(34deg,#e9a9209c,#af19198c) ,url(../images/register.webp)  no-repeat  ;
-    background-size: cover;
+    background-size: fill;
     height: auto;
 }
 #sign-page{
@@ -167,9 +167,9 @@ ul.footer-links{
     box-shadow: 2px 8px 25px var(--lightgray);
 }
 .sign-form input{
-    border: 0;
-    border-bottom: var(--lightgray) 1px solid;
-    color: var(--dark-grey);
+    border: 0 !important;
+    border-bottom: var(--lightgray) 1px solid !important;
+    color: var(--dark-grey) !important;
 }
 .sign-form label{
     color: var(--lightgray);
@@ -214,22 +214,23 @@ ul.footer-links{
     color: var(--white);
 }
 .sign-in-page input{
-    background-color: transparent;
+    background-color: transparent !important;
     border: none;
-    color: white;
+    color: white !important;
     border-bottom: var(--white) 1px solid;
 }
 .sign-in-page ::placeholder{
-    color: white;
-    font-weight: 300;
+    color: var(--white);
+    font-weight: 400;
     text-align: center;
 }
 .sign-in-page input:focus-visible{
-    outline: none;
-    text-align: center;
+    outline: none !important;
+    text-align: center !important;
 }
 .sign-in-page label{
-    margin: 35px 0px 15px 0px;
+    margin: 35px 0px 0 0px;
+    font-weight: 700;
 }
 .image01{
     margin: 35px 0px;
