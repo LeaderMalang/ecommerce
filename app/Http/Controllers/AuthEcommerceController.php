@@ -20,17 +20,17 @@ class AuthEcommerceController extends Controller
 // ->sort('name')->search();
 
 // dd( $items);
-$context = App::make('\Aimeos\Shop\Base\Context')->get(TRUE);
-$manager = \Aimeos\MShop::create( $context , 'product' );
-$filter = $manager->filter( true );
-$items = $manager->search( $filter, ['text', 'media', 'price','name'] );
+// $context = App::make('\Aimeos\Shop\Base\Context')->get(TRUE);
+// $manager = \Aimeos\MShop::create( $context , 'product' );
+// $filter = $manager->filter( true );
+// $items = $manager->search( $filter, ['text', 'media', 'price','name'] );
 
-foreach($items as $item){
-    echo '<pre>';
-       var_dump($item->bdata);
-       echo '</pre>';
-   }
-dd($items);
+// foreach($items as $item){
+//     echo '<pre>';
+//        var_dump($item->bdata);
+//        echo '</pre>';
+//    }
+// dd($items);
         return view('home');
     }
     public function login(){
