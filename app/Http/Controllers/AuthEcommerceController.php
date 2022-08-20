@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Aimeos\Shop\Facades\Product;
-
+use App;
 class AuthEcommerceController extends Controller
 {
     public function logout(){
@@ -18,10 +18,19 @@ class AuthEcommerceController extends Controller
 //         $items = Product::uses(['text', 'media', 'price','name'])
 
 // ->sort('name')->search();
-// foreach($items as $item){
-//  var_dump($item);
-// }
+
 // dd( $items);
+$context = App::make('\Aimeos\Shop\Base\Context')->get(TRUE);
+$manager = \Aimeos\MShop::create( $context , 'product' );
+$filter = $manager->filter( true );
+$items = $manager->search( $filter, ['text', 'media', 'price','name'] );
+
+foreach($items as $item){
+    echo '<pre>';
+       var_dump($item->bdata);
+       echo '</pre>';
+   }
+dd($items);
         return view('home');
     }
     public function login(){
