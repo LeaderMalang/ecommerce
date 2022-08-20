@@ -3,9 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Aimeos\Shop\Facades\Product;
 
 class AuthEcommerceController extends Controller
 {
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('ecommerce-login');
+    }
+    public function home(){
+//         $items = Product::uses(['text', 'media', 'price','name'])
+
+// ->sort('name')->search();
+// foreach($items as $item){
+//  var_dump($item);
+// }
+// dd( $items);
+        return view('home');
+    }
     public function login(){
         return view ('sign-in');
     }
@@ -13,44 +31,44 @@ class AuthEcommerceController extends Controller
         return view ('sign-up');
     }
     public function signup_store(Request $request){
+        // $validator = Validator::make($request->all(), ;
+        // dd($validator->errors());
+        $rules=[
+            'email' => 'required|unique:users,email',
+            'full_name' => 'required|string',
+            'password' => 'required|confirmed|string|min:6'
+        ];
+        $request->validate($rules);
 
         $user = new User([
-            'name' => $request->name,
+            'name' => $request->full_name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'username'=>$request->username,
-            'phone'=>$request->phone,
-            'city'=>$request->address,
-            'country'=>$request->country,
-            'parent'=>$request->sponsor,
-            'sponsor'=>$request->sponsor
+
         ]);
         if($user->save()){
             $msg=['result'=>1,'message'=>"Successfully Registered Account !"];
-            return response()->json($msg);
+            return redirect()->route('ecommerce-login')->with($msg);
         }else {
             $msg=['result'=>0,'message'=>"Internal Server Error Please Try Again Later!"];
-            return response()->json($msg);
+            return redirect()->back()->withErrors($msg);
         }
 
 
     }
     public function login_check(Request $request){
-        $validator = Validator::make($request->all(), [
-            'username' => 'required|string',
-            'password' => 'required|string'
-        ]);
-        if ($validator->fails()) {
+        $rules=[
+            'email' => 'required|email',
+            'password' => 'required|string|min:6'
+        ];
+        $request->validate($rules);
 
-            $obj = ["Status" => false, "success" => 0, "errors" => $validator->errors()];
-            return response()->back($obj);
-        }
-        $credentials = request(['username', 'password']);
+        $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials))
             return redirect()->back()->withErrors(['msg' => 'Username or Password Did not Matched']);
 
 
-        return redirect()->route('dashboard');
+        return redirect()->route('home-page');
 
 
     }

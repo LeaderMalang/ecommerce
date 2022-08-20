@@ -422,3 +422,42 @@
     </div>
 </div>
 @endsection
+@section('footer_scripts')
+<script>
+
+var url = 'http://localhost:8000/jsonapi'; // Base URL from config
+
+var promise = $.ajax( url, {
+    method: "OPTIONS",
+    dataType: "json"
+});
+
+promise.done( function( options ) {
+    var args = {'include': 'media,price,product,text,catalog,supplier,stock'};
+    var params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
+    }
+
+    var result = $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'],
+        data: params
+    });
+
+    result.done( function( result ) {
+        console.log( result.data );
+        console.log(result);
+        var items=result.data ;
+        items.forEach(function(item){
+            console.log(item);
+        });
+    });
+});
+
+</script>
+@endsection
