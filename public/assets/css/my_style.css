@@ -158,8 +158,8 @@ ul.footer-links{
     font-weight: 400;
 }
 .image{
-    background: linear-gradient(34deg,#e9a9209c,#af19198c) ,url(../images/register.webp)  no-repeat  ;
-    background-size: fill;
+    background: linear-gradient(34deg,#e9a9209c,#af19198c) ,url(../images/register.webp)  no-repeat   ;
+    background-size: cover;
     height: auto;
 }
 #sign-page{
@@ -209,7 +209,6 @@ ul.footer-links{
 .sign-in-page{
     text-align: center;
     background: linear-gradient(rgba(255 255 255/11%),rgba(255 255 255/18%));
-    width: 30%;
     margin: auto;
     color: var(--white);
 }
@@ -370,8 +369,12 @@ ul.footer-links{
         .sidenav {padding-top: 5rem;}
         .sidenav a {font-size: 3rem;font-weight: 600;}
         }
-        
-
+        .checkbox{
+            margin: 17px 10px 0px 0px;
+        }
+        .sign-in-input{
+            max-width: 100% !important;
+        }
 
 
 /* MEDIA QUERYS STARTED FROM HERE */
@@ -384,6 +387,9 @@ ul.footer-links{
     }
     .bars{
         margin-left: 15rem;
+    }
+    .sign-in-page{
+        width: 100%;
     }
     
 }
@@ -406,17 +412,41 @@ ul.footer-links{
     .bars{
         margin-left: 20rem;
     }
+    .sign-in-page{
+        width: 75%;
+    }
+    
 }
+
 
 @media screen and (min-width:700px) {
     .bars{
         margin-left: 54rem;
     }
+    .sign-in-page{
+        width: 50%;
+    }
+    .sign-up-image{
+        width: 65%;
+    }
+    .sign-up-from{
+        width: 35%;
+    }
+    
 }
 
 @media screen and (min-width:1000px) {
     .header01{
         display: none;
+    }
+    .sign-in-page{
+        width: 30%;
+    }
+    .sign-up-image{
+        width: 65%;
+    }
+    .sign-up-from{
+        width: 35%;
     }
 }
 
@@ -427,11 +457,22 @@ ul.footer-links{
 }
 
 @media screen and (max-width:400px) {
+    .social-btn {
+        padding: 10px 10px !important;
+    }
+    #submit-btn {
+        padding: 8px 30px !important;
+    }
     
 }
 
 @media screen and (max-width:700px) {
-    
+    #submit-btn {
+        padding: 8px 40px ;
+    }
+    .sign-up-image{
+        display: none;
+    }
 }
 
 @media screen and (max-width:1000px) {
