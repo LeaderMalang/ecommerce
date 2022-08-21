@@ -11,12 +11,12 @@
     <script src="assets/js/poper.js"></script>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/owl.carousel.js"></script>
-    <script></script>
+    @yield('footer_scripts')
     <script>
         $(function () {
             $('.home-slider-01').owlCarousel({
                 loop: true,
-                
+
                 dots: true,
                 responsive: {
                     0: {
@@ -46,7 +46,7 @@
                 }
             })
         })
-    </script>            
+    </script>
 </body>
 
 </html>
