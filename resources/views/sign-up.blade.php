@@ -1,53 +1,36 @@
 @extends('layout.master')
 @section('content')
-
 <div class="container">
-        <div class="row" id="sign-page">
-            <div class="sign-up-image image">
+        <div class="image">
+            <form action="{{route('login_check')}}" method="POST" class="sign-in-page">
+                @csrf
+                <h2 style="padding: 95px 0px 10px 0px;font-weight: 900;letter-spacing:1px;text-align: center;">Sign In</h2>
+                @if($errors->any())
+                @foreach ($errors->all() as $error )
+                <h4 style="color:red">{{$error}}</h4>
 
-            </div>
-            <div class="sign-up-form">
-                <div class="container sign-form">
-                    <h2 style="margin: 36px 0px;font-weight: 700;">Sign Up</h2>
-
-                    @if($errors->any())
-                    @foreach ($errors->all() as $error )
-                    <h4 style="color:red">{{$error}}</h4>
-
-                    @endforeach
-
+                @endforeach
                 @endif
-                    <form action="{{route('signup_store')}}" method="POST" class=" sign_up-page">
-                        @csrf
-                        <label for="name">Full Name</label>
-                        <input type="text" placeholder="Name" name="full_name" class="input-field" id="name"><br>
 
-                        <label for="email">Email</label>
-                        <input type="email" placeholder="Email Address" name="email"  class="input-field" id="email"><br>
+                @isset($message)
+                <h4 style="color:rgb(28, 51, 9)">{{$message}}</h4>
 
+                @endisset
+                <label for="name">Full name</label>
+                <input type="text" placeholder="Name" name="name" id="email"  class="sign-in-input"><br>
+                <label for="email">E-MAIL</label>
+                <input type="email" placeholder="Email Address" name="email" id="email"  class="sign-in-input"><br>
+                <label for="password">PASSWORD</label>
+                <input type="text" placeholder="Enter Password" name="password" id="password" class="sign-in-input">><br>
+                <label for="password">REPEAT PASSWORD</label>
+                <input type="text" placeholder="Enter Password" name="password_confirmation" id="password" class="sign-in-input">><br>
 
-                        <label for="password">Password</label>
-                        <input type="password" placeholder="*********" name="password" class="input-field" id="password"><br>
-
-                        <label for="repeat">Repeat Password</label>
-                        <input type="password" placeholder="*********" name="password_confirmation"  class="input-field"  id="repeat"><br>
-
-                        <div class="container-fluid d-flex align-items-center">
-
-                            <input type="checkbox" id="select" class="checkbox">
-                        <label for="select" style="font-weight: 300px;font-size: 14px;margin-top: 25px;">I agree to the<a href="">Terms of Users</a> </label>
-                        </div>
-
-
-                        <input type="submit" id="submit-btn" value="Sign Up">
-                        <a href="/ecommerce-signin" class="sign_in" style="color: var(--dark-grey);">Sign In<i
-                                class="fa-solid fa-arrow-right-long" style="margin-left: 10px;"></i></a>
-                    </form>
-                </div>
+                <input type="submit" id="submit-btn" value="Sign In">
+                <a href="/ecommerce-signup" class="sign_in" style="color: var(--dark-grey);">Sign Up<i
+                        class="fa-solid fa-arrow-right-long" style="margin-left: 10px;"></i></a>
+            </form>
         </div>
     </div>
-</div>
-
 
 
 @endsection
