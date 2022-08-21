@@ -35,18 +35,29 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ecommerce-signin">My Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/ecommerce-signup">joining Now</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">FAQ</a>
                 </li>
+
+                @if(auth()->user())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('ecommerce-logout')}}">Logout</a>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="ecommerce-signin">My Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ecommerce-signup">joining Now</a>
+                </li>
+                @endif
+
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i style="font-size: 2rem;"
                             class="header-icon sl sl-icon-magnifier"></i></a>
@@ -75,6 +86,6 @@
                 <a href="#" >About Us</a>
           </div>
           <span style="font-size:30px;cursor:pointer;float: right;color:var(--black); " class="bars" onclick="openNav()">&#9776; </span>
-          
+
     </section>
 </header>

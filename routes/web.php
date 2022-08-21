@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\AuthEcommerceController;
 
 if( env( 'SHOP_MULTILOCALE' ) )
 {
@@ -20,15 +21,13 @@ if( env( 'SHOP_MULTILOCALE' ) )
     });
 }
 
-Route::get('/', function () {
-    return view ('home');
-});
-Route::get('/ecommerce-signup', function () {
-    return view ('sign-up');
-});
-Route::get('/ecommerce-signin', function () {
-    return view ('sign-in');
-});
+Route::get('/ecommerce-logout', [AuthEcommerceController::class,'home'])->name('ecommerce-logout');
+Route::get('/', [AuthEcommerceController::class,'home'])->name('home-page');
+Route::get('/ecommerce-signup', [AuthEcommerceController::class,'signup']);
+Route::get('/ecommerce-signin',[AuthEcommerceController::class,'login'])->name('ecommerce-login');
+
+Route::post('/ecommerce-signup-store', [AuthEcommerceController::class,'signup_store'])->name('signup_store');
+Route::post('/ecommerce-signin-check',[AuthEcommerceController::class,'login_check'])->name('login_check');;
 
 
 Route::group($locale ?? [], function() {
