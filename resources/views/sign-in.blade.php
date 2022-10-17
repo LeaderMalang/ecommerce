@@ -20,7 +20,7 @@
 
                 <input type="email" placeholder="Email Address" name="email" id="email"  class="sign-in-input"><br>
                 <label for="password">PASSWORD</label><br>
-                <input type="text" placeholder="Enter Password" name="password" id="password" class="sign-in-input">><br>
+                <input type="text" placeholder="Enter Password" name="password" id="password" class="sign-in-input"><br>
 
                 <input type="submit" id="submit-btn" value="Sign In">
                 <a href="/ecommerce-signup" class="sign_in" style="color: var(--dark-grey);">Sign Up<i

@@ -20,6 +20,9 @@ if( env( 'SHOP_MULTILOCALE' ) )
         return redirect(app()->getLocale());
     });
 }
+Route::get('/shop',function(){
+    return redirect()->route('home-page');
+});
 
 Route::get('/ecommerce-logout', [AuthEcommerceController::class,'home'])->name('ecommerce-logout');
 Route::get('/', [AuthEcommerceController::class,'home'])->name('home-page');
